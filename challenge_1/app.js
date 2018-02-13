@@ -25,10 +25,12 @@ var restart = function (event) {
 
 // document.getElementsByClassName(newGame).addEventListener('click', restart);
 
+// x = 1;
+// o = 2;
 // var board = {
-//   1: [0, 1, 2],
-//   2: [3, 'five', 'six'],
-//   3: ['seven', 'eight', 'nine']
+//   1: [0, 0, 0],
+//   2: [0, 0, 0],
+//   3: [0, 0, 0]
 // }
 
 // var boxChoice = function() {
