@@ -17,67 +17,54 @@ var showStatus = function (status) {
 
 // on click, restart a new game
 var new_game = document.getElementsByClassName('newGame');
-var restart = function (new_game) {
-
+var restart = function (event) {
+  // document.querySelectorAll('grid-item').addEventListener('click', empty());
+  var children = document.getElementsByClassName('grid-item').childNodes;
+  document.querySelectorAll('grid-item').removeChild(children);
 }
 
+// document.getElementsByClassName(newGame).addEventListener('click', restart);
 
+// var board = {
+//   1: [0, 1, 2],
+//   2: [3, 'five', 'six'],
+//   3: ['seven', 'eight', 'nine']
+// }
+
+// var boxChoice = function() {
+//   for (var row in board) {
+//     var column = board[row];
+//   }
+// }
 
 // user input
 // var player X
 // var player O
-var board = {
-  1: ['one', 'two', 'three'],
-  2: ['four', 'five', 'six'],
-  3: ['seven', 'eight', 'nine']
-}
-
-
-
-
 var turns = 1;
 
 // toggle pieces
 var togglePiece = function(event) {
-  console.log(event);
+  // mouse event
+  // console.log(event)
+  // event object, path property and first element in array. split on space and get 2nd element
+  // console.log(event.path[0].getAttribute('class').split(' ').slice(1));
+  var box = event.path[0].getAttribute('class').split(' ').slice(1);
   var newDiv = document.createElement('div');
   var x = document.createTextNode('X');
   var o = document.createTextNode('O');
 
-  var boxChoice = function() {
-    for (var row in board) {
-      var column = board[row];
-    }
-  }
-
-  // column = event;
-
   if (turns % 2 !== 0) {
     newDiv.appendChild(x);
     turns++;
-    console.log(turns);
   } else {
     newDiv.appendChild(o);
     turns++;
-    console.log(turns);
   }
-  document.getElementsByClassName('grid-item')[0].appendChild(newDiv);
+  // append new div to box on click
+  document.getElementsByClassName('grid-item')[box].appendChild(newDiv);
 }
-
 // set event listener for on click, toggle piece
 document.getElementsByClassName('grid-item').addEventListener('click', togglePiece);
 
 
 
-
-// managing app state
-// state
-// setState = won or tie
-
-// set board object with keys 1-3
-// each key = a row, value is an array with length of 3
-// randomize row and col
-// if piece not yet place, place piece
-
-// rendering to screen
-// on click, render X or O based on who's turn

@@ -8,25 +8,21 @@
 <link rel="stylesheet" href="tictactoe.css">
 <script type="text/javascript" src="app.js"></script>
 <h1>Tic-Tac-Toe</h1>
-<div class="newGame">
-  <button onclick="restart()">New Game</button>
+<div>
+  <button class="newGame" onclick="restart()">New Game</button>
 </div>
-
-<!-- <div class="status"> 
-  <button onclick="showStatus()">Status</button>
-</div> -->
 
 <h3>Game Board:</h3>
 <div id="board">
-  <div class="grid-item one" onclick="togglePiece()"></div>
-  <div class="grid-item two" onclick="togglePiece()"></div>
-  <div class="grid-item three" onclick="togglePiece()"></div>
-  <div class="grid-item four" onclick="togglePiece()"></div>
-  <div class="grid-item five" onclick="togglePiece()"></div>
-  <div class="grid-item six" onclick="togglePiece()"></div>
-  <div class="grid-item seven" onclick="togglePiece()"></div>
-  <div class="grid-item eight" onclick="togglePiece()"></div>
-  <div class="grid-item nine" onclick="togglePiece()"></div>
+  <div class="grid-item 0" onclick="togglePiece(event)"></div>
+  <div class="grid-item 1" onclick="togglePiece(event)"></div>
+  <div class="grid-item 2" onclick="togglePiece(event)"></div>
+  <div class="grid-item 3" onclick="togglePiece(event)"></div>
+  <div class="grid-item 4" onclick="togglePiece(event)"></div>
+  <div class="grid-item 5" onclick="togglePiece(event)"></div>
+  <div class="grid-item 6" onclick="togglePiece(event)"></div>
+  <div class="grid-item 7" onclick="togglePiece(event)"></div>
+  <div class="grid-item 8" onclick="togglePiece(event)"></div>
 </div>
 </div>
 </body>

@@ -19,7 +19,7 @@ h3 {
   font-style: bold;
 }
 
-.newGame button {
+button, .newGame{
   background-color: lime;
   border-color: teal;
   color: white;
