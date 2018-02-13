@@ -54,14 +54,21 @@ var togglePiece = function(event) {
   var newDiv = document.createElement('div');
   var x = document.createTextNode('X');
   var o = document.createTextNode('O');
+  // console.log(document.getElementsByClassName('grid-item')[box].childNodes);
+  //   console.log(document.getElementsByClassName('grid-item')[box].childNodes.length);
+  // if (document.getElementsByClassName('grid-item')[box].childNodes.length === 0)
+  
 
-  if (turns % 2 !== 0) {
-    newDiv.appendChild(x);
-    turns++;
-  } else {
-    newDiv.appendChild(o);
-    turns++;
-  }
+    if (turns % 2 !== 0) {
+      newDiv.appendChild(x);
+      turns++;
+    } else {
+      newDiv.appendChild(o);
+      turns++;
+    }
+
+
+  // }
   // append new div to box on click
   document.getElementsByClassName('grid-item')[box].appendChild(newDiv);
 }
