@@ -4,23 +4,14 @@
   <title>CSV Report Generator</title>
 </head>
 <body>
-  <script type="text/javascript" src="../server.js"></script>
   <script type="text/javascript" src="app.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <h1>CSV Report Generator</h1>
-  <form method="POST">
-    <textarea id="text" rows="8" cols="50">
-    First Name:
-    Last Name:
-    County:
-    City:
-    Role:
-    Sales:
-    Children Names:
-    </textarea>
-    <input type="submit" value="Submit">
-    <!-- <button id="submitBtn">Submit</button> -->
+  <form method="POST" method="GET">
+    <textarea id="text" rows="8" cols="50"></textarea>
+    <button id="submitBtn">Submit</button>
   </form>
 </body>
+  <script type="text/javascript" src="../server.js"></script>
 </html>
 
