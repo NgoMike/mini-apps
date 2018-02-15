@@ -978,30 +978,37 @@ function (_React$Component) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-    _this.winner = false;
-    _this.red = 1;
-    _this.black = 2;
+    _this.winner = false; // this.red = 1;
+    // this.black = 2;
+
     _this.state = {
+      toggle: false,
       row1: [0, 0, 0, 0],
       row2: [0, 0, 0, 0],
       row3: [0, 0, 0, 0],
       row4: [0, 0, 0, 0]
     };
 
-    _this.togglePiece.bind(_assertThisInitialized(_this));
+    _this.handleClick.bind(_assertThisInitialized(_this));
 
     return _this;
   }
 
   _createClass(App, [{
-    key: "togglePiece",
-    value: function togglePiece(e) {
-      e.preventDefault();
-      this.setState(this.state.row1.push(1)); // get value of spot clicked
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault(); // this.setState(this.state.row1.push);
+      // get value of spot clicked
       // match value with row/col location
       // change state of row/col
       // detect win or tie for: horizontal, vertical, diagonal and ties
       // display message
+
+      this.setState(function (prevState) {
+        return {
+          toggle: !prevState.toggle
+        };
+      });
     } // diagonal: [ [ row1[0], row2[1], row3[2], row4[3] ] , [ row1[3], row2[2], row3[1], row4[0] ] ],
     // verticals: [ [ row1[0], row2[0], row3[0], row4[0] ], [ row1[1], row2[1], row3[1], row4[1] ], [ row1[2], row2[2], row3[2], row4[2] ], 
     // [ row1[3], row2[3], row3[3], row4[3] ] ]
@@ -1014,8 +1021,8 @@ function (_React$Component) {
 
       return _react.default.createElement("div", {
         className: "grid-item",
-        onClick: function onClick() {
-          _this2.togglePiece(e);
+        onClick: function onClick(e) {
+          _this2.handleClick(e);
         }
       });
     }
