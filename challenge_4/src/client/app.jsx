@@ -7,7 +7,7 @@ class App extends React.Component {
     this.state = {
       turn: 1,
       frame: 1,
-      frameResult: 0, 
+      // frameResult: 0, 
       frameScore: 0,
       total: 0,
       message: ''
@@ -27,49 +27,64 @@ class App extends React.Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
-    this.updateFrame = this.updateFrame.bind(this);
-    this.updateTotal = this.updateTotal.bind(this);
+    // this.updateFrame = this.updateFrame.bind(this);
     this.updateMessage = this.updateMessage.bind(this);
   }
 
 
   handleClick(e) {
     e.preventDefault();
+    // get className from buttons, then loop over this.points for value
     var getPoints = e.target.className;
     let value = 0;
     for (var keys in this.points) {
+      // save value in a variable to use for if statements below
       value = this.points[getPoints];
     }
+    // sets limit to 10 pts max
+    if (this.state.frameScore >= 10) {
+        // resets to 0 if greater than 10
+        this.setState({ frameScore: this.state.frameScore = 0 });
+      } else {
+        // if less than 10, add the points 
+        this.setState({ frameScore: this.state.frameScore += value });
+      }
+    // increment frames up to 10 max
+    if (this.state.frame < 10) {
+      // increment turns
+      if (this.state.turn < 2) {
+        this.setState({ turn: this.state.turn += 1 });
+      } else {
+        this.setState({ turn: this.state.turn -= 1 });
+      }
+      // 2 turns before increment frame
+      if (this.state.turn === 2) {
+        this.setState({ frame: this.state.frame += 1 });
+      }
+    } else {
+      alert('Game Over!');
+    }
+    // keep tracks of running total
     this.setState({ 
-      frameResult: this.state.frameResult += value, 
-      frameScore: this.state.frameScore += value,
-      total: this.state.frameResult + this.state.frameScore, 
+      total: this.state.total + this.state.frameScore, 
     });
   }
-
-  updateFrame(e) {
+  // suppose to render message if strike...
+  updateMessage() {
     e.preventDefault();
-    this.setState({ frame: this.state.frame++ });
-  }
-
-  updateTotal() {
-    e.preventDefault();
-    this.setState({ total: this.state.frameResult + this.state.frameScore });
-  }
-
-  updateMessage(e) {
-    e.preventDefault();
-    if (this.state.frameResult === 10) {
-      this.setState({ message: this.state.message + 'Strike!'});
+    if (this.state.frameScore === 10 && this.state.turn === 1) {
+      this.setState({ message: this.state.message += 'Strike!'});
     }
   }
 
   render () {
     return (
       <div>
-        <div className='CurrentFrame' onChange={this.updateFrame}>
+        <div className='CurrentFrame'>
           Current Frame: {this.state.frame}
         </div>
+
+        <div>Turn: {this.state.turn}</div>
 
         <p>How Many Pins Do You Want To Hit?</p>
         <button className='onePoint' onClick={this.handleClick}>1</button>
@@ -83,10 +98,10 @@ class App extends React.Component {
         <button className='ninePoints' onClick={this.handleClick}>9</button>
         <button className='tenPoints' onClick={this.handleClick}>10</button>
 
-        {/*Keeps track of points per turn, strikes, and spares */}
+        {/*Keeps track of points per turn, strikes, and spares 
         <div className='FrameResult' onChange={this.handleClick}>
           Result: {this.state.frameResult}
-        </div>
+        </div> */}
 
         {/*Keeps track of current frame score */}
         <div className='FrameScore'>
